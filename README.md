@@ -1,6 +1,5 @@
-# raw-sources – الملفات الأصلية
+# raw-sources 
 
-الـ branch ده فيه **الملفات الخام بس** (PDF / DOC) اللي اتبنت منها الداتا في `main` (`data/`). مفيهوش كود ولا داتا متقسمة.
 
 ```bash
 git fetch origin raw-sources
@@ -24,4 +23,3 @@ git checkout raw-sources        # أو: git worktree add ../raw raw-sources
 | `raw/secondary/case_reference_10_rulings.pdf` | مرجع 10 أحكام | `rulings_index.csv` |
 | `raw/draft_2026/family_law_draft_2026_with_memo.pdf` | مشروع قانون الأسرة 2026 + المذكرة الإيضاحية (217 ص) | `data/draft_2026/` |
 
-⚠️ الريبو private: الموسوعة ودليل المجلس القومي عليهم حقوق نشر.
