@@ -5,7 +5,7 @@ from pathlib import Path
 
 HERE = Path(__file__).parent
 SRC = HERE / "personal_status_laws_compilation.txt"
-OUT = HERE / "chunks_article.json"
+OUT = HERE.parent / "data" / "chunks.json"
 
 
 LAW_BY_PAGE = [
@@ -80,9 +80,12 @@ def build_chunks(src=SRC):
                     heading.insert(0, cur["lines"].pop())
                 chunks.append(cur)
             num, extra = m.group(1), m.group(2).strip()
-            article = (num + " " + re.sub(r"\(.*?\)", "", extra)).strip()   # drop "(مضافة)"
-            cur = {"id": f"{law_id}_{article_suffix(num, extra)}",
-                   "law": law_id, "law_name": law_name, "article": article,
+            label = (num + " " + re.sub(r"\(.*?\)", "", extra)).strip()   # "76 مكرر", drop "(مضافة)"
+            suffix = article_suffix(num, extra)                               # "a076bis"
+            cur = {"id": f"{law_id}_{suffix}",
+                   "law": law_id, "law_name": law_name,
+                   "article": suffix[1:].lstrip("0"),                         # "76bis"
+                   "label": label,
                    "heading": " | ".join(heading), "page": page, "lines": []}
             continue
 
@@ -102,12 +105,14 @@ def build_chunks(src=SRC):
 
 
 def finalize(chunks):
+    # text = section title (if any) + "مادة N" line + article body  (Task 1 spec)
+    out = []
     for c in chunks:
-        body = "\n".join(c.pop("lines"))
-        header = f"{c['law_name']} - مادة {c['article']}"
-        if c["heading"]:
-            header += f" - {c['heading']}"
-        c["text"] = header + "\n" + body
-        c["n_words"] = len(body.split())
-    return chunks
+        body = "\n".join(c["lines"])
+        title = c["heading"].replace(" | ", "\n")
+        text = (title + "\n" if title else "") + f"مادة {c['label']}\n" + body
+        out.append({"id": c["id"], "text": text, "law": c["law"], "article": c["article"],
+                    "page": c["page"], "law_name": c["law_name"], "heading": c["heading"],
+                    "n_words": len(body.split())})
+    return out
 
