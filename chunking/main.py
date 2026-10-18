@@ -12,8 +12,9 @@ def main():
     print("duplicate ids:", dups or "none")
     print("words  min:", words[0], " median:", words[len(words) // 2], " max:", words[-1])
 
+    OUT.parent.mkdir(exist_ok=True)
     OUT.write_text(json.dumps(chunks, ensure_ascii=False, indent=1), encoding="utf-8")
-    print(len(chunks), "chunks saved ->", OUT.name)
+    print(len(chunks), "chunks saved -> data/chunks.json")
 
 
 main()
