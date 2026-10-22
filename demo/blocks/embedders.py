@@ -1,24 +1,81 @@
-"""STUB for Task 3. Returns fake data in the right shape so the rest of the
-pipeline can be built and tested before the real embedders exist.
+"""Task 3: text embedders.
 
-Task 3 replaces this file. Keep the same class and method names.
+Turns texts (chunks or questions) into L2-normalized float32 vectors.
+All model details (model id, prefixes, max length) live here and nowhere else.
+
+    emb = Embedder("e5")
+    vecs = emb.encode(["..."], is_query=False)   # shape (n, 768)
 """
+
+from __future__ import annotations
+
+import sys
+from pathlib import Path
 
 import numpy as np
 
+ROOT = Path(__file__).resolve().parents[2]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from utils import normalize_ar  # noqa: E402
+
+MODELS = {
+    "e5": {
+        "id": "intfloat/multilingual-e5-base",
+        "dim": 768,
+        "max_len": 512,
+        "query_prefix": "query: ",
+        "passage_prefix": "passage: ",
+    },
+    "bge": {
+        "id": "BAAI/bge-m3",
+        "dim": 1024,
+        "max_len": 1024,
+        "query_prefix": "",
+        "passage_prefix": "",
+    },
+}
+
 
 class Embedder:
-    DIMS = {"e5": 768, "bge": 1024}
+    DIMS = {name: cfg["dim"] for name, cfg in MODELS.items()}
 
     def __init__(self, name: str):
-        if name not in self.DIMS:
-            raise ValueError(f"unknown embedder {name!r}, expected one of {list(self.DIMS)}")
+        if name not in MODELS:
+            raise ValueError(f"unknown embedder {name!r}, expected one of {list(MODELS)}")
         self.name = name
-        self.dim = self.DIMS[name]
+        self.cfg = MODELS[name]
+        self.dim = self.cfg["dim"]
+        self._model = None
+
+    @property
+    def model(self):
+        if self._model is None:
+            from sentence_transformers import SentenceTransformer
+
+            self._model = SentenceTransformer(self.cfg["id"])
+            self._model.max_seq_length = self.cfg["max_len"]
+        return self._model
 
     def encode(self, texts: list[str], is_query: bool) -> np.ndarray:
-        rng = np.random.default_rng(abs(hash((self.name, is_query, tuple(texts)))) % (2**32))
-        vecs = rng.standard_normal((len(texts), self.dim)).astype(np.float32)
-        norms = np.linalg.norm(vecs, axis=1, keepdims=True)
-        norms[norms == 0] = 1.0
-        return vecs / norms
+        prefix = self.cfg["query_prefix"] if is_query else self.cfg["passage_prefix"]
+        prepared = [prefix + normalize_ar(t) for t in texts]
+
+        self._report_truncation(prepared)
+
+        vecs = self.model.encode(
+            prepared,
+            batch_size=32,
+            normalize_embeddings=True,
+            convert_to_numpy=True,
+            show_progress_bar=len(prepared) > 32,
+        )
+        return np.asarray(vecs, dtype=np.float32)
+
+    def _report_truncation(self, prepared: list[str]) -> None:
+        max_len = self.cfg["max_len"]
+        lengths = [len(ids) for ids in self.model.tokenizer(prepared)["input_ids"]]
+        too_long = sum(1 for n in lengths if n > max_len)
+        if too_long:
+            print(f"[{self.name}] {too_long} of {len(prepared)} texts exceed {max_len} tokens and get truncated")
