@@ -1,2 +1,5 @@
 torch
 FlagEmbedding
+faiss-cpu
+sentence-transformers
+numpy
