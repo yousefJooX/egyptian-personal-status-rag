@@ -18,6 +18,7 @@ except ImportError:
     torch = None
 
 DATA_DIR = Path(__file__).parent / "data"
+CHUNKS_PATH = Path(__file__).resolve().parents[1] / "data" / "chunks.json"  # written by chunking/
 RESULTS_DIR = Path(__file__).parent / "results"
 TOP_K = 5
 CANDIDATES = 20
@@ -45,7 +46,7 @@ def main() -> None:
             torch.cuda.reset_peak_memory_stats()
 
     cfg = CONFIGS[args.config]
-    chunks = load_json(DATA_DIR / "chunks.json")
+    chunks = load_json(CHUNKS_PATH)
     test_set = load_json(DATA_DIR / "test_set.json")
     chunks_by_id = {c["id"]: c for c in chunks}
 

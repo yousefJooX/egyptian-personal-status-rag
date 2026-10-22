@@ -9,10 +9,10 @@ the real Task 5 piece: `blocks/rerankers.py`.
 |---|---|
 | `blocks/rerankers.py` | Real (Task 5). Uses `BAAI/bge-reranker-v2-m3` via `FlagEmbedding.FlagReranker`. |
 | `configs.py`, `registry.py`, `run.py` | Real (Task 5). |
-| `blocks/embedders.py`, `blocks/dense.py` | Stub — Task 3 replaces. |
+| `blocks/embedders.py`, `blocks/dense.py` | Real (Task 3). e5 / bge-m3 + FAISS, cached in `data/index/`. Check with `python check_dense.py`. |
 | `blocks/bm25.py`, `blocks/hybrid.py` | Stub — Task 4 replaces. |
 | `blocks/llms.py` | Stub — Task 6 replaces. |
-| `data/chunks.json` | Placeholder 10-chunk sample — Task 1 replaces with the real extraction. |
+| `../data/chunks.json` | Real 188 article chunks from Task 1 (`chunking/`). Single copy at the repo root. |
 | `data/test_set.json` | Placeholder sample — Task 2 replaces with the real 30-40 question set. |
 
 Stubs return fake data in the exact output shape the real block must produce,
@@ -34,7 +34,7 @@ Output lands in `results/{config}_retrieval.json`, `_answers.json`, `_cost.json`
 ## Swapping in the real pieces
 
 Task 1, 3, 4, 6 each replace one or more files under `blocks/` (and Task 1
-replaces `data/chunks.json`, Task 2 replaces `data/test_set.json`) without
+replaces `../data/chunks.json`, Task 2 replaces `data/test_set.json`) without
 touching `registry.py`, `configs.py`, or `run.py` — as long as the class and
 method signatures below are kept.
 
