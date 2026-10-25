@@ -4,3 +4,5 @@ results/*
 !results/.gitkeep
 data/index/*
 !data/index/.gitkeep
+
+!results/kaggle/
