@@ -3,3 +3,4 @@ FlagEmbedding
 faiss-cpu
 sentence-transformers
 numpy
+rank-bm25
