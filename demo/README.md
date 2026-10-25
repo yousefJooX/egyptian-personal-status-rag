@@ -1,32 +1,32 @@
-# demo — Task 5 scaffold
+# demo — the RAG pipeline
 
-Day-0 scaffolding for the RAG pipeline (retriever -> reranker -> LLM) plus
-the real Task 5 piece: `blocks/rerankers.py`.
+Retriever -> (reranker) -> LLM, one block per file, wired by `registry.py`
+from a named config in `configs.py`.
 
-## What's real vs. stub
+## Blocks
 
 | File | Status |
 |---|---|
 | `blocks/rerankers.py` | Real (Task 5). Uses `BAAI/bge-reranker-v2-m3` via `FlagEmbedding.FlagReranker`. |
 | `configs.py`, `registry.py`, `run.py` | Real (Task 5). |
 | `blocks/embedders.py`, `blocks/dense.py` | Real (Task 3). e5 / bge-m3 + FAISS, cached in `data/index/`. Check with `python check_dense.py`. |
-| `blocks/bm25.py`, `blocks/hybrid.py` | Stub — Task 4 replaces. |
-| `blocks/llms.py` | Stub — Task 6 replaces. |
+| `blocks/bm25.py`, `blocks/hybrid.py` | Real (Task 4). `rank_bm25.BM25Okapi` cached in `data/index/bm25.pkl`; hybrid = RRF over dense + BM25 top 20. |
+| `blocks/llms.py` | Real (Task 6). Qwen2.5 3B / 7B (4-bit), Aya Expanse 8B (4-bit). Check with `python check_llm.py [qwen3b]`. |
 | `../data/chunks.json` | Real 188 article chunks from Task 1 (`chunking/`). Single copy at the repo root. |
-| `data/test_set.json` | Placeholder sample — Task 2 replaces with the real 30-40 question set. |
+| `data/test_set.json` | Real (Task 2). 35 questions, 10 of them unanswerable. |
 
-Stubs return fake data in the exact output shape the real block must produce,
-so `run.py` and everything downstream (Task 7's `evaluate.py`) can be built
-and tested today.
+`run.py` runs retrieval for every question first, writes the retrieval file,
+frees the embedder and reranker, and only then loads the LLM, so one 6-8 GB GPU
+never holds both. `--retrieval-only` never loads an LLM.
 
 ## Run it
 
 ```bash
 cd demo
-pip install -r requirements.txt   # only needed for configs with a reranker, e.g. arch3
-python run.py arch1               # no reranker, no heavy deps needed
-python run.py arch1 --retrieval-only
-python run.py arch3               # loads the real bge-reranker-v2-m3
+uv sync                                     # from the repo root
+uv run python run.py arch1 --retrieval-only  # retrieval only, no LLM
+uv run python run.py arch1                   # full pipeline with qwen3b
+uv run python run.py arch3                   # hybrid + bge-reranker-v2-m3 + aya8b
 ```
 
 Output lands in `results/{config}_retrieval.json`, `_answers.json`, `_cost.json`.
