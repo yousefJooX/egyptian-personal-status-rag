@@ -9,22 +9,16 @@ All model details (model id, prefixes, max length) live here and nowhere else.
 
 from __future__ import annotations
 
-import sys
-from pathlib import Path
-
 import numpy as np
 
-ROOT = Path(__file__).resolve().parents[2]
-if str(ROOT) not in sys.path:
-    sys.path.insert(0, str(ROOT))
-
-from utils import normalize_ar  # noqa: E402
+from utils import normalize_ar
 
 MODELS = {
     "e5": {
         "id": "intfloat/multilingual-e5-base",
         "dim": 768,
         "max_len": 512,
+        "batch_size": 32,
         "query_prefix": "query: ",
         "passage_prefix": "passage: ",
     },
@@ -32,6 +26,7 @@ MODELS = {
         "id": "BAAI/bge-m3",
         "dim": 1024,
         "max_len": 1024,
+        "batch_size": 8,  # 1024-token inputs: 32 at once does not fit next to a 6 GB desktop
         "query_prefix": "",
         "passage_prefix": "",
     },
@@ -66,7 +61,7 @@ class Embedder:
 
         vecs = self.model.encode(
             prepared,
-            batch_size=32,
+            batch_size=self.cfg["batch_size"],
             normalize_embeddings=True,
             convert_to_numpy=True,
             show_progress_bar=len(prepared) > 32,

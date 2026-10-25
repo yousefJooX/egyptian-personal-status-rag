@@ -17,6 +17,8 @@ from pathlib import Path
 import faiss
 import numpy as np
 
+from utils import normalize_ar
+
 INDEX_DIR = Path(__file__).resolve().parents[1] / "data" / "index"
 
 
@@ -26,7 +28,7 @@ class DenseRetriever:
         self.embedder = embedder
         self.ids = [c["id"] for c in chunks]
         self.fingerprint = hashlib.sha256(
-            json.dumps([[c["id"], c["text"]] for c in chunks], ensure_ascii=False).encode("utf-8")
+            json.dumps([[c["id"], normalize_ar(c["text"])] for c in chunks], ensure_ascii=False).encode("utf-8")
         ).hexdigest()
 
         INDEX_DIR.mkdir(parents=True, exist_ok=True)

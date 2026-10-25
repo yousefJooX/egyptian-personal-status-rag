@@ -12,8 +12,11 @@ import json
 import random
 import re
 import sys
+import gc
 import time
 from pathlib import Path
+
+import torch
 
 from blocks.dense import DenseRetriever
 from blocks.embedders import Embedder
@@ -58,6 +61,11 @@ def check(name: str, chunks: list[dict]) -> bool:
     again = DenseRetriever(chunks, embedder)
     cache_ok = (again.embeddings == dense.embeddings).all()
     print(f"3. cache reload in {time.time() - start:.2f}s  ->  {'OK' if cache_ok else 'FAIL'}")
+
+    del dense, again, embedder
+    gc.collect()
+    if torch.cuda.is_available():
+        torch.cuda.empty_cache()  # free this model before the next embedder loads
 
     return shape_ok and cache_ok and rate >= 0.95
 

@@ -4,15 +4,10 @@ import hashlib
 import json
 import pickle
 import re
-import sys
 from pathlib import Path
 
 import numpy as np
 from rank_bm25 import BM25Okapi
-
-PROJECT_ROOT = Path(__file__).resolve().parents[2]
-if str(PROJECT_ROOT) not in sys.path:
-    sys.path.insert(0, str(PROJECT_ROOT))
 
 from utils import normalize_ar
 
@@ -33,7 +28,7 @@ class BM25Retriever:
         self.ids = [chunk["id"] for chunk in chunks]
         self.fingerprint = hashlib.sha256(
             json.dumps(
-                [[chunk["id"], chunk["text"]] for chunk in chunks],
+                [[chunk["id"], normalize_ar(chunk["text"])] for chunk in chunks],
                 ensure_ascii=False,
             ).encode("utf-8")
         ).hexdigest()
