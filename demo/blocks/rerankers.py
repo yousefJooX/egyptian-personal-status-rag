@@ -19,11 +19,6 @@ class Reranker:
             Reranker._model = FlagReranker("BAAI/bge-reranker-v2-m3", use_fp16=True)
         self.model = Reranker._model
 
-    @classmethod
-    def release(cls) -> None:
-        """Drop the shared model so its GPU memory can be reused (run.py, before the LLM)."""
-        cls._model = None
-
     def rerank(self, question: str, hits: list[dict], k: int) -> list[dict]:
         pairs = [[question, self.chunks_by_id[h["chunk_id"]]["text"]] for h in hits]
         scores = self.model.compute_score(pairs, normalize=True)
