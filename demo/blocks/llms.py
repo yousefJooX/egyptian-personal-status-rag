@@ -20,6 +20,8 @@ MODELS = {
     "qwen3b": {"id": "Qwen/Qwen2.5-3B-Instruct", "load_in_4bit": False},
     "qwen7b": {"id": "Qwen/Qwen2.5-7B-Instruct", "load_in_4bit": True},
     "aya8b": {"id": "CohereForAI/aya-expanse-8b", "load_in_4bit": True},
+    # extra (not in the Task 6 spec); thinking off so it answers directly like the others
+    "qwen3_8b": {"id": "Qwen/Qwen3-8B", "load_in_4bit": True, "chat_kwargs": {"enable_thinking": False}},
 }
 
 SEED = 42
@@ -39,6 +41,9 @@ PROMPT = """أجب عن السؤال باستخدام النصوص التالي�
 # Matched on normalized text: "مادة 76", "المادة (77)", "رقم المادة: 65", "مادة 76 مكرر", "مادة 11 مكررا ثانيا"
 CITATION_RE = re.compile(r"مادة\s*:?\s*\(?\s*(\d+)\s*\)?(\s*مكرر\S*(?:\s*\(?\s*(ثانيا|ثالثا))?)?")
 BIS_LEVEL = {"ثانيا": "2", "ثالثا": "3"}
+
+# Qwen3 marks reasoning with <think>...</think>; it is off, but never let it reach parsing.
+THINK_RE = re.compile(r"<think>.*?</think>", re.DOTALL)
 
 # The refusal sentence without its final period, so "... المتاحة" still counts.
 REFUSAL_KEY = normalize_ar(REFUSAL).rstrip(".")
@@ -101,7 +106,10 @@ class LLM:
         contexts = "\n\n".join(c["text"] for c in chunks)
         prompt = PROMPT.format(contexts=contexts, question=question)
         text = self.tokenizer.apply_chat_template(
-            [{"role": "user", "content": prompt}], tokenize=False, add_generation_prompt=True
+            [{"role": "user", "content": prompt}],
+            tokenize=False,
+            add_generation_prompt=True,
+            **self.cfg.get("chat_kwargs", {}),
         )
         # the chat template already contains the special tokens
         inputs = self.tokenizer(text, return_tensors="pt", add_special_tokens=False).to(self.model.device)
@@ -116,5 +124,6 @@ class LLM:
             )
 
         new_tokens = output[0][inputs["input_ids"].shape[1]:]
-        answer = self.tokenizer.decode(new_tokens, skip_special_tokens=True).strip()
+        answer = self.tokenizer.decode(new_tokens, skip_special_tokens=True)
+        answer = THINK_RE.sub("", answer).strip()
         return parse_answer(answer, chunks)
