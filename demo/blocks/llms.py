@@ -36,8 +36,8 @@ PROMPT = """أجب عن السؤال باستخدام النصوص التالي�
 
 السؤال: {question}"""
 
-# Matched on normalized text: "مادة 76", "المادة (77)", "مادة 76 مكرر", "مادة 11 مكررا ثانيا"
-CITATION_RE = re.compile(r"مادة\s*\(?\s*(\d+)\s*\)?(\s*مكرر\S*(?:\s*\(?\s*(ثانيا|ثالثا))?)?")
+# Matched on normalized text: "مادة 76", "المادة (77)", "رقم المادة: 65", "مادة 76 مكرر", "مادة 11 مكررا ثانيا"
+CITATION_RE = re.compile(r"مادة\s*:?\s*\(?\s*(\d+)\s*\)?(\s*مكرر\S*(?:\s*\(?\s*(ثانيا|ثالثا))?)?")
 BIS_LEVEL = {"ثانيا": "2", "ثالثا": "3"}
 
 # The refusal sentence without its final period, so "... المتاحة" still counts.

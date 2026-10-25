@@ -27,6 +27,7 @@ def check_parsing(chunks_by_id: dict) -> bool:
         ("لم أجد إجابة في القواعد المتاحة.", [], True),
         ("لم أجد إجابة في القواعد المتاحة", [], True),
         ("الإجابة بدون رقم مادة", [], False),
+        ("نعم تنفذ فورا.  رقم المادة: 77", ["law1_2000_a077"], False),
     ]
     ok = True
     for answer, want_cited, want_refused in cases:
