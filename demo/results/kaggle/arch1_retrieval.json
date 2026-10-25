@@ -1,0 +1,1052 @@
+[
+  {
+    "qid": "q_001",
+    "results": [
+      {
+        "rank": 1,
+        "chunk_id": "law1_2000_a076bis",
+        "score": 0.8663
+      },
+      {
+        "rank": 2,
+        "chunk_id": "law25_1920_a005",
+        "score": 0.8591
+      },
+      {
+        "rank": 3,
+        "chunk_id": "law25_1920_a004",
+        "score": 0.8532
+      },
+      {
+        "rank": 4,
+        "chunk_id": "law1_2000_a023",
+        "score": 0.842
+      },
+      {
+        "rank": 5,
+        "chunk_id": "law25_1929_a016",
+        "score": 0.8413
+      }
+    ]
+  },
+  {
+    "qid": "q_002",
+    "results": [
+      {
+        "rank": 1,
+        "chunk_id": "law1_2000_a003",
+        "score": 0.848
+      },
+      {
+        "rank": 2,
+        "chunk_id": "law10_2004_a003",
+        "score": 0.8467
+      },
+      {
+        "rank": 3,
+        "chunk_id": "law1_2000_a036",
+        "score": 0.8295
+      },
+      {
+        "rank": 4,
+        "chunk_id": "law10_2004_a012",
+        "score": 0.8257
+      },
+      {
+        "rank": 5,
+        "chunk_id": "law1_2000_a010",
+        "score": 0.8247
+      }
+    ]
+  },
+  {
+    "qid": "q_003",
+    "results": [
+      {
+        "rank": 1,
+        "chunk_id": "law25_1929_a005",
+        "score": 0.8605
+      },
+      {
+        "rank": 2,
+        "chunk_id": "law25_1920_a012",
+        "score": 0.8257
+      },
+      {
+        "rank": 3,
+        "chunk_id": "law25_1920_a003",
+        "score": 0.8237
+      },
+      {
+        "rank": 4,
+        "chunk_id": "law1_2000_a029",
+        "score": 0.8184
+      },
+      {
+        "rank": 5,
+        "chunk_id": "law25_1929_a011bis",
+        "score": 0.8165
+      }
+    ]
+  },
+  {
+    "qid": "q_004",
+    "results": [
+      {
+        "rank": 1,
+        "chunk_id": "law1_2000_a067",
+        "score": 0.8603
+      },
+      {
+        "rank": 2,
+        "chunk_id": "decree1087_2000_a004",
+        "score": 0.8602
+      },
+      {
+        "rank": 3,
+        "chunk_id": "law1_2000_a010",
+        "score": 0.8333
+      },
+      {
+        "rank": 4,
+        "chunk_id": "law25_1929_a020",
+        "score": 0.8327
+      },
+      {
+        "rank": 5,
+        "chunk_id": "law10_2004_a010",
+        "score": 0.8298
+      }
+    ]
+  },
+  {
+    "qid": "q_005",
+    "results": [
+      {
+        "rank": 1,
+        "chunk_id": "law10_2004_a012",
+        "score": 0.8558
+      },
+      {
+        "rank": 2,
+        "chunk_id": "law1_2000_a010",
+        "score": 0.8336
+      },
+      {
+        "rank": 3,
+        "chunk_id": "law1_2000_a019",
+        "score": 0.8319
+      },
+      {
+        "rank": 4,
+        "chunk_id": "law1_2000_a018",
+        "score": 0.8315
+      },
+      {
+        "rank": 5,
+        "chunk_id": "law1_2000_a017",
+        "score": 0.8309
+      }
+    ]
+  },
+  {
+    "qid": "q_006",
+    "results": [
+      {
+        "rank": 1,
+        "chunk_id": "law1_2000_a077",
+        "score": 0.7597
+      },
+      {
+        "rank": 2,
+        "chunk_id": "law10_2004_a012",
+        "score": 0.7593
+      },
+      {
+        "rank": 3,
+        "chunk_id": "law1_2000_a033",
+        "score": 0.7504
+      },
+      {
+        "rank": 4,
+        "chunk_id": "law1_2000_a009",
+        "score": 0.75
+      },
+      {
+        "rank": 5,
+        "chunk_id": "decree1089_2000_a011",
+        "score": 0.7493
+      }
+    ]
+  },
+  {
+    "qid": "q_007",
+    "results": [
+      {
+        "rank": 1,
+        "chunk_id": "law25_1920_a010",
+        "score": 0.7118
+      },
+      {
+        "rank": 2,
+        "chunk_id": "law1_2000_a076bis",
+        "score": 0.7082
+      },
+      {
+        "rank": 3,
+        "chunk_id": "law25_1929_a018bis3",
+        "score": 0.7072
+      },
+      {
+        "rank": 4,
+        "chunk_id": "law25_1929_a023",
+        "score": 0.706
+      },
+      {
+        "rank": 5,
+        "chunk_id": "law25_1929_a023bis",
+        "score": 0.7023
+      }
+    ]
+  },
+  {
+    "qid": "q_008",
+    "results": [
+      {
+        "rank": 1,
+        "chunk_id": "law1_2000_a030",
+        "score": 0.8125
+      },
+      {
+        "rank": 2,
+        "chunk_id": "law1_2000_a076bis",
+        "score": 0.8035
+      },
+      {
+        "rank": 3,
+        "chunk_id": "law25_1929_a023bis",
+        "score": 0.7978
+      },
+      {
+        "rank": 4,
+        "chunk_id": "law1_2000_a037",
+        "score": 0.7908
+      },
+      {
+        "rank": 5,
+        "chunk_id": "law1_2000_a047",
+        "score": 0.7871
+      }
+    ]
+  },
+  {
+    "qid": "q_009",
+    "results": [
+      {
+        "rank": 1,
+        "chunk_id": "law1_2000_a002",
+        "score": 0.8955
+      },
+      {
+        "rank": 2,
+        "chunk_id": "law1_2000_a016",
+        "score": 0.8495
+      },
+      {
+        "rank": 3,
+        "chunk_id": "law1_2000_a048",
+        "score": 0.838
+      },
+      {
+        "rank": 4,
+        "chunk_id": "law1_2000_a028",
+        "score": 0.837
+      },
+      {
+        "rank": 5,
+        "chunk_id": "law1_2000_a009",
+        "score": 0.8354
+      }
+    ]
+  },
+  {
+    "qid": "q_010",
+    "results": [
+      {
+        "rank": 1,
+        "chunk_id": "law10_2004_a006",
+        "score": 0.8719
+      },
+      {
+        "rank": 2,
+        "chunk_id": "law10_2004_a008",
+        "score": 0.8584
+      },
+      {
+        "rank": 3,
+        "chunk_id": "law10_2004_a012",
+        "score": 0.8518
+      },
+      {
+        "rank": 4,
+        "chunk_id": "law10_2004_a009",
+        "score": 0.8452
+      },
+      {
+        "rank": 5,
+        "chunk_id": "law25_1929_a011bis",
+        "score": 0.845
+      }
+    ]
+  },
+  {
+    "qid": "q_011",
+    "results": [
+      {
+        "rank": 1,
+        "chunk_id": "law1_2000_a001",
+        "score": 0.8503
+      },
+      {
+        "rank": 2,
+        "chunk_id": "law25_1929_a023",
+        "score": 0.8188
+      },
+      {
+        "rank": 3,
+        "chunk_id": "law25_1929_a018",
+        "score": 0.8188
+      },
+      {
+        "rank": 4,
+        "chunk_id": "decree1087_2000_a003",
+        "score": 0.8127
+      },
+      {
+        "rank": 5,
+        "chunk_id": "decree1088_2000_a020",
+        "score": 0.8125
+      }
+    ]
+  },
+  {
+    "qid": "q_012",
+    "results": [
+      {
+        "rank": 1,
+        "chunk_id": "law1_2000_a020",
+        "score": 0.8676
+      },
+      {
+        "rank": 2,
+        "chunk_id": "law25_1929_a011bis2",
+        "score": 0.8535
+      },
+      {
+        "rank": 3,
+        "chunk_id": "law25_1920_a006",
+        "score": 0.8518
+      },
+      {
+        "rank": 4,
+        "chunk_id": "law25_1929_a011",
+        "score": 0.8508
+      },
+      {
+        "rank": 5,
+        "chunk_id": "law25_1929_a009",
+        "score": 0.8496
+      }
+    ]
+  },
+  {
+    "qid": "q_013",
+    "results": [
+      {
+        "rank": 1,
+        "chunk_id": "law25_1929_a016",
+        "score": 0.8413
+      },
+      {
+        "rank": 2,
+        "chunk_id": "law1_2000_a076bis",
+        "score": 0.8407
+      },
+      {
+        "rank": 3,
+        "chunk_id": "law1_2000_a023",
+        "score": 0.8337
+      },
+      {
+        "rank": 4,
+        "chunk_id": "law25_1929_a018",
+        "score": 0.8312
+      },
+      {
+        "rank": 5,
+        "chunk_id": "law25_1920_a001",
+        "score": 0.8297
+      }
+    ]
+  },
+  {
+    "qid": "q_014",
+    "results": [
+      {
+        "rank": 1,
+        "chunk_id": "law25_1929_a005bis",
+        "score": 0.8495
+      },
+      {
+        "rank": 2,
+        "chunk_id": "law1_2000_a020",
+        "score": 0.8307
+      },
+      {
+        "rank": 3,
+        "chunk_id": "law25_1920_a006",
+        "score": 0.8296
+      },
+      {
+        "rank": 4,
+        "chunk_id": "law25_1929_a011",
+        "score": 0.8286
+      },
+      {
+        "rank": 5,
+        "chunk_id": "law25_1929_a017",
+        "score": 0.828
+      }
+    ]
+  },
+  {
+    "qid": "q_015",
+    "results": [
+      {
+        "rank": 1,
+        "chunk_id": "decree1087_2000_a002",
+        "score": 0.855
+      },
+      {
+        "rank": 2,
+        "chunk_id": "law1_2000_a069",
+        "score": 0.8405
+      },
+      {
+        "rank": 3,
+        "chunk_id": "law1_2000_a029",
+        "score": 0.8353
+      },
+      {
+        "rank": 4,
+        "chunk_id": "law1_2000_a070",
+        "score": 0.833
+      },
+      {
+        "rank": 5,
+        "chunk_id": "decree1087_2000_a001",
+        "score": 0.8307
+      }
+    ]
+  },
+  {
+    "qid": "q_016",
+    "results": [
+      {
+        "rank": 1,
+        "chunk_id": "law25_1929_a012",
+        "score": 0.8639
+      },
+      {
+        "rank": 2,
+        "chunk_id": "law25_1929_a011bis",
+        "score": 0.8548
+      },
+      {
+        "rank": 3,
+        "chunk_id": "law1_2000_a020",
+        "score": 0.8531
+      },
+      {
+        "rank": 4,
+        "chunk_id": "law25_1929_a017",
+        "score": 0.8447
+      },
+      {
+        "rank": 5,
+        "chunk_id": "law25_1929_a018bis",
+        "score": 0.8424
+      }
+    ]
+  },
+  {
+    "qid": "q_017",
+    "results": [
+      {
+        "rank": 1,
+        "chunk_id": "decree1087_2000_a004",
+        "score": 0.8139
+      },
+      {
+        "rank": 2,
+        "chunk_id": "law25_1929_a020",
+        "score": 0.8028
+      },
+      {
+        "rank": 3,
+        "chunk_id": "law10_2004_a011",
+        "score": 0.7969
+      },
+      {
+        "rank": 4,
+        "chunk_id": "law1_2000_a067",
+        "score": 0.7939
+      },
+      {
+        "rank": 5,
+        "chunk_id": "law25_1929_a015",
+        "score": 0.7907
+      }
+    ]
+  },
+  {
+    "qid": "q_018",
+    "results": [
+      {
+        "rank": 1,
+        "chunk_id": "law1_2000_a003",
+        "score": 0.8319
+      },
+      {
+        "rank": 2,
+        "chunk_id": "law25_1920_a001",
+        "score": 0.8275
+      },
+      {
+        "rank": 3,
+        "chunk_id": "law1_2000_a076bis",
+        "score": 0.8213
+      },
+      {
+        "rank": 4,
+        "chunk_id": "law25_1929_a016",
+        "score": 0.8198
+      },
+      {
+        "rank": 5,
+        "chunk_id": "law1_2000_a047",
+        "score": 0.8191
+      }
+    ]
+  },
+  {
+    "qid": "q_019",
+    "results": [
+      {
+        "rank": 1,
+        "chunk_id": "law10_2004_a008",
+        "score": 0.8671
+      },
+      {
+        "rank": 2,
+        "chunk_id": "law10_2004_a006",
+        "score": 0.8533
+      },
+      {
+        "rank": 3,
+        "chunk_id": "law10_2004_a007",
+        "score": 0.8527
+      },
+      {
+        "rank": 4,
+        "chunk_id": "law10_2004_a009",
+        "score": 0.8463
+      },
+      {
+        "rank": 5,
+        "chunk_id": "law10_2004_a005",
+        "score": 0.8357
+      }
+    ]
+  },
+  {
+    "qid": "q_020",
+    "results": [
+      {
+        "rank": 1,
+        "chunk_id": "law1_2000_a018",
+        "score": 0.8642
+      },
+      {
+        "rank": 2,
+        "chunk_id": "law1_2000_a020",
+        "score": 0.8446
+      },
+      {
+        "rank": 3,
+        "chunk_id": "law25_1929_a011",
+        "score": 0.8376
+      },
+      {
+        "rank": 4,
+        "chunk_id": "law25_1929_a011bis",
+        "score": 0.8361
+      },
+      {
+        "rank": 5,
+        "chunk_id": "law25_1929_a006",
+        "score": 0.836
+      }
+    ]
+  },
+  {
+    "qid": "q_021",
+    "results": [
+      {
+        "rank": 1,
+        "chunk_id": "law10_2004_a010",
+        "score": 0.8627
+      },
+      {
+        "rank": 2,
+        "chunk_id": "law10_2004_a001",
+        "score": 0.8395
+      },
+      {
+        "rank": 3,
+        "chunk_id": "law10_2004_a003",
+        "score": 0.8385
+      },
+      {
+        "rank": 4,
+        "chunk_id": "law10_2004_a011",
+        "score": 0.8365
+      },
+      {
+        "rank": 5,
+        "chunk_id": "law10_2004_a012",
+        "score": 0.8295
+      }
+    ]
+  },
+  {
+    "qid": "q_022",
+    "results": [
+      {
+        "rank": 1,
+        "chunk_id": "law10_2004_a011",
+        "score": 0.8396
+      },
+      {
+        "rank": 2,
+        "chunk_id": "law1_2000_a018",
+        "score": 0.7996
+      },
+      {
+        "rank": 3,
+        "chunk_id": "law10_2004_a012",
+        "score": 0.7971
+      },
+      {
+        "rank": 4,
+        "chunk_id": "law10_2004_a003",
+        "score": 0.795
+      },
+      {
+        "rank": 5,
+        "chunk_id": "law1_2000_a019",
+        "score": 0.7916
+      }
+    ]
+  },
+  {
+    "qid": "q_023",
+    "results": [
+      {
+        "rank": 1,
+        "chunk_id": "law1_2000_a024",
+        "score": 0.8772
+      },
+      {
+        "rank": 2,
+        "chunk_id": "law1_2000_a025",
+        "score": 0.8478
+      },
+      {
+        "rank": 3,
+        "chunk_id": "law1_2000_a007",
+        "score": 0.8473
+      },
+      {
+        "rank": 4,
+        "chunk_id": "decree1090_2000_a002",
+        "score": 0.8315
+      },
+      {
+        "rank": 5,
+        "chunk_id": "decree1089_2000_a009",
+        "score": 0.8308
+      }
+    ]
+  },
+  {
+    "qid": "q_024",
+    "results": [
+      {
+        "rank": 1,
+        "chunk_id": "law1_2000_a077",
+        "score": 0.8498
+      },
+      {
+        "rank": 2,
+        "chunk_id": "law1_2000_a076",
+        "score": 0.8349
+      },
+      {
+        "rank": 3,
+        "chunk_id": "law25_1920_a001",
+        "score": 0.8329
+      },
+      {
+        "rank": 4,
+        "chunk_id": "law1_2000_a076bis",
+        "score": 0.8304
+      },
+      {
+        "rank": 5,
+        "chunk_id": "law25_1929_a016",
+        "score": 0.8303
+      }
+    ]
+  },
+  {
+    "qid": "q_025",
+    "results": [
+      {
+        "rank": 1,
+        "chunk_id": "law1_2000_a078",
+        "score": 0.8654
+      },
+      {
+        "rank": 2,
+        "chunk_id": "law25_1920_a001",
+        "score": 0.8544
+      },
+      {
+        "rank": 3,
+        "chunk_id": "law1_2000_a076bis",
+        "score": 0.8468
+      },
+      {
+        "rank": 4,
+        "chunk_id": "law25_1920_a004",
+        "score": 0.8452
+      },
+      {
+        "rank": 5,
+        "chunk_id": "law25_1929_a018",
+        "score": 0.8451
+      }
+    ]
+  },
+  {
+    "qid": "q_026",
+    "results": [
+      {
+        "rank": 1,
+        "chunk_id": "law1_2000_a005",
+        "score": 0.843
+      },
+      {
+        "rank": 2,
+        "chunk_id": "law10_2004_a003",
+        "score": 0.8307
+      },
+      {
+        "rank": 3,
+        "chunk_id": "law1_2000_a006",
+        "score": 0.8256
+      },
+      {
+        "rank": 4,
+        "chunk_id": "law1_2000_a044",
+        "score": 0.8256
+      },
+      {
+        "rank": 5,
+        "chunk_id": "law10_2004_a011",
+        "score": 0.8255
+      }
+    ]
+  },
+  {
+    "qid": "q_027",
+    "results": [
+      {
+        "rank": 1,
+        "chunk_id": "decree1089_2000_a009",
+        "score": 0.8676
+      },
+      {
+        "rank": 2,
+        "chunk_id": "law1_2000_a004",
+        "score": 0.8639
+      },
+      {
+        "rank": 3,
+        "chunk_id": "decree1087_2000_a007",
+        "score": 0.846
+      },
+      {
+        "rank": 4,
+        "chunk_id": "decree1089_2000_a011",
+        "score": 0.84
+      },
+      {
+        "rank": 5,
+        "chunk_id": "decree1089_2000_a006",
+        "score": 0.8385
+      }
+    ]
+  },
+  {
+    "qid": "q_028",
+    "results": [
+      {
+        "rank": 1,
+        "chunk_id": "decree1088_2000_a007",
+        "score": 0.838
+      },
+      {
+        "rank": 2,
+        "chunk_id": "decree1088_2000_a019",
+        "score": 0.8317
+      },
+      {
+        "rank": 3,
+        "chunk_id": "law1_2000_a043",
+        "score": 0.83
+      },
+      {
+        "rank": 4,
+        "chunk_id": "decree1088_2000_a018",
+        "score": 0.8284
+      },
+      {
+        "rank": 5,
+        "chunk_id": "decree1088_2000_a005",
+        "score": 0.8276
+      }
+    ]
+  },
+  {
+    "qid": "q_029",
+    "results": [
+      {
+        "rank": 1,
+        "chunk_id": "law25_1920_a010",
+        "score": 0.7902
+      },
+      {
+        "rank": 2,
+        "chunk_id": "law1_2000_a030",
+        "score": 0.7755
+      },
+      {
+        "rank": 3,
+        "chunk_id": "law1_2000_a047",
+        "score": 0.7724
+      },
+      {
+        "rank": 4,
+        "chunk_id": "decree1088_2000_a010",
+        "score": 0.7703
+      },
+      {
+        "rank": 5,
+        "chunk_id": "law1_2000_a076bis",
+        "score": 0.7649
+      }
+    ]
+  },
+  {
+    "qid": "q_030",
+    "results": [
+      {
+        "rank": 1,
+        "chunk_id": "decree1088_2000_a013",
+        "score": 0.8089
+      },
+      {
+        "rank": 2,
+        "chunk_id": "decree1090_2000_a002",
+        "score": 0.8021
+      },
+      {
+        "rank": 3,
+        "chunk_id": "law1_2000_a023",
+        "score": 0.7909
+      },
+      {
+        "rank": 4,
+        "chunk_id": "law1_2000_a073",
+        "score": 0.7891
+      },
+      {
+        "rank": 5,
+        "chunk_id": "law1_2000_a074",
+        "score": 0.7864
+      }
+    ]
+  },
+  {
+    "qid": "q_031",
+    "results": [
+      {
+        "rank": 1,
+        "chunk_id": "law25_1929_a023",
+        "score": 0.7008
+      },
+      {
+        "rank": 2,
+        "chunk_id": "law1_2000_a033",
+        "score": 0.6915
+      },
+      {
+        "rank": 3,
+        "chunk_id": "law1_2000_a034",
+        "score": 0.6915
+      },
+      {
+        "rank": 4,
+        "chunk_id": "law1_2000_a029",
+        "score": 0.6908
+      },
+      {
+        "rank": 5,
+        "chunk_id": "decree1090_2000_a002",
+        "score": 0.6908
+      }
+    ]
+  },
+  {
+    "qid": "q_032",
+    "results": [
+      {
+        "rank": 1,
+        "chunk_id": "law1_2000_a030",
+        "score": 0.8109
+      },
+      {
+        "rank": 2,
+        "chunk_id": "law1_2000_a031",
+        "score": 0.8044
+      },
+      {
+        "rank": 3,
+        "chunk_id": "law1_2000_a076bis",
+        "score": 0.8031
+      },
+      {
+        "rank": 4,
+        "chunk_id": "law25_1929_a023bis",
+        "score": 0.7993
+      },
+      {
+        "rank": 5,
+        "chunk_id": "law1_2000_a037",
+        "score": 0.7965
+      }
+    ]
+  },
+  {
+    "qid": "q_033",
+    "results": [
+      {
+        "rank": 1,
+        "chunk_id": "law1_2000_a076bis",
+        "score": 0.8079
+      },
+      {
+        "rank": 2,
+        "chunk_id": "law1_2000_a030",
+        "score": 0.807
+      },
+      {
+        "rank": 3,
+        "chunk_id": "law1_2000_a046",
+        "score": 0.8059
+      },
+      {
+        "rank": 4,
+        "chunk_id": "law1_2000_a074",
+        "score": 0.8051
+      },
+      {
+        "rank": 5,
+        "chunk_id": "law1_2000_a023",
+        "score": 0.8047
+      }
+    ]
+  },
+  {
+    "qid": "q_034",
+    "results": [
+      {
+        "rank": 1,
+        "chunk_id": "law10_2004_a012",
+        "score": 0.8349
+      },
+      {
+        "rank": 2,
+        "chunk_id": "law25_1929_a011",
+        "score": 0.8145
+      },
+      {
+        "rank": 3,
+        "chunk_id": "decree1090_2000_a002",
+        "score": 0.8064
+      },
+      {
+        "rank": 4,
+        "chunk_id": "law1_2000_a006",
+        "score": 0.8062
+      },
+      {
+        "rank": 5,
+        "chunk_id": "law10_2004_a009",
+        "score": 0.8062
+      }
+    ]
+  },
+  {
+    "qid": "q_035",
+    "results": [
+      {
+        "rank": 1,
+        "chunk_id": "decree1087_2000_a005",
+        "score": 0.7555
+      },
+      {
+        "rank": 2,
+        "chunk_id": "law25_1929_a023",
+        "score": 0.7549
+      },
+      {
+        "rank": 3,
+        "chunk_id": "decree1087_2000_a008",
+        "score": 0.75
+      },
+      {
+        "rank": 4,
+        "chunk_id": "law1_2000_a076bis",
+        "score": 0.7496
+      },
+      {
+        "rank": 5,
+        "chunk_id": "law25_1920_a010",
+        "score": 0.7461
+      }
+    ]
+  }
+]
