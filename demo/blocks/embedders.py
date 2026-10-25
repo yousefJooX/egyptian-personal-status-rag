@@ -18,7 +18,6 @@ MODELS = {
         "id": "intfloat/multilingual-e5-base",
         "dim": 768,
         "max_len": 512,
-        "batch_size": 32,
         "query_prefix": "query: ",
         "passage_prefix": "passage: ",
     },
@@ -26,7 +25,6 @@ MODELS = {
         "id": "BAAI/bge-m3",
         "dim": 1024,
         "max_len": 1024,
-        "batch_size": 8,  # 1024-token inputs: 32 at once does not fit next to a 6 GB desktop
         "query_prefix": "",
         "passage_prefix": "",
     },
@@ -61,7 +59,7 @@ class Embedder:
 
         vecs = self.model.encode(
             prepared,
-            batch_size=self.cfg["batch_size"],
+            batch_size=32,
             normalize_embeddings=True,
             convert_to_numpy=True,
             show_progress_bar=len(prepared) > 32,

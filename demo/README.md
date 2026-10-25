@@ -15,16 +15,14 @@ from a named config in `configs.py`.
 | `../data/chunks.json` | Real 188 article chunks from Task 1 (`chunking/`). Single copy at the repo root. |
 | `data/test_set.json` | Real (Task 2). 35 questions, 10 of them unanswerable. |
 
-`run.py` runs retrieval for every question first, writes the retrieval file,
-frees the embedder and reranker, and only then loads the LLM, so one 6-8 GB GPU
-never holds both. `--retrieval-only` never loads an LLM.
+Heavy models (qwen7b, aya8b) are run on a Kaggle T4 GPU; see the results there.
 
 ## Run it
 
 ```bash
 cd demo
 uv sync                                     # from the repo root
-uv run python run.py arch1 --retrieval-only  # retrieval only, no LLM
+uv run python run.py arch1 --retrieval-only  # retrieval only
 uv run python run.py arch1                   # full pipeline with qwen3b
 uv run python run.py arch3                   # hybrid + bge-reranker-v2-m3 + aya8b
 ```
