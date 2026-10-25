@@ -5,12 +5,13 @@
 """
 
 import argparse
+import gc
 import json
 import time
 from pathlib import Path
 
 from configs import CONFIGS
-from registry import build
+from registry import build_llm, build_retrieval, release_retrieval
 
 try:
     import torch
@@ -23,6 +24,12 @@ RESULTS_DIR = Path(__file__).parent / "results"
 TOP_K = 5
 CANDIDATES = 20
 SEED = 42
+
+
+def free_gpu() -> None:
+    gc.collect()
+    if torch is not None and torch.cuda.is_available():
+        torch.cuda.empty_cache()
 
 
 def load_json(path: Path):
@@ -50,11 +57,9 @@ def main() -> None:
     test_set = load_json(DATA_DIR / "test_set.json")
     chunks_by_id = {c["id"]: c for c in chunks}
 
-    retriever, reranker, llm = build(cfg, chunks)
+    retriever, reranker = build_retrieval(cfg, chunks)
 
     retrieval_out = []
-    answers_out = []
-
     for item in test_set:
         qid, question = item["qid"], item["question"]
 
@@ -70,26 +75,32 @@ def main() -> None:
 
         retrieval_out.append({"qid": qid, "results": results})
 
-        if args.retrieval_only:
-            continue
-
-        top_chunks = [chunks_by_id[r["chunk_id"]] for r in results]
-        start = time.time()
-        generated = llm.generate(question, top_chunks)
-        seconds = time.time() - start
-
-        answers_out.append(
-            {
-                "qid": qid,
-                "answer": generated["answer"],
-                "cited_chunks": generated["cited_chunks"],
-                "refused": generated["refused"],
-                "seconds": round(seconds, 4),
-            }
-        )
-
     RESULTS_DIR.mkdir(exist_ok=True)
     write_json(RESULTS_DIR / f"{args.config}_retrieval.json", retrieval_out)
+
+    answers_out = []
+    if not args.retrieval_only:
+        # free the embedder/reranker before the LLM takes the GPU
+        del retriever, reranker
+        release_retrieval()
+        free_gpu()
+        llm = build_llm(cfg)
+
+        for item, retrieved in zip(test_set, retrieval_out):
+            top_chunks = [chunks_by_id[r["chunk_id"]] for r in retrieved["results"]]
+            start = time.time()
+            generated = llm.generate(item["question"], top_chunks)
+            seconds = time.time() - start
+
+            answers_out.append(
+                {
+                    "qid": item["qid"],
+                    "answer": generated["answer"],
+                    "cited_chunks": generated["cited_chunks"],
+                    "refused": generated["refused"],
+                    "seconds": round(seconds, 4),
+                }
+            )
 
     if not args.retrieval_only:
         write_json(RESULTS_DIR / f"{args.config}_answers.json", answers_out)
