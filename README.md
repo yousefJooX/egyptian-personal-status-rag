@@ -47,12 +47,16 @@ flowchart LR
 | Task | الوصف | المسؤول | الحالة |
 |---|---|---|---|
 | [T1](demo/tasks/Task1-Data-and-Chunks.md) | استخراج النصوص وتقسيمها مادة مادة + `normalize_ar` | @yousefJooX | ✅ اتعمل merge — 188 مادة |
-| [T2](demo/tasks/Task2-Test-Set.md) | Test set (30–40 سؤال + إجابات مرجعية) | @mariasamir173-tech | 🟡 في `main` (35 سؤال) — محتاج إعادة صياغة ~12 سؤال بألفاظ المادة |
+| [T2](demo/tasks/Task2-Test-Set.md) | Test set (30–40 سؤال + إجابات مرجعية) | @mariasamir173-tech | ✅ 35 سؤال (11 بألفاظ المادة، 9 بالعامية، 5 متعددة المواد، 10 خارج الموضوع) — محتاج review من حد تاني |
 | [T3](demo/tasks/Task3-Dense-Retrieval.md) | Embedders (e5, bge-m3) + FAISS dense retriever | @yousefJooX | ✅ اتعمل merge |
 | [T4](demo/tasks/Task4-BM25-and-Hybrid.md) | BM25 + Hybrid (RRF) | @marwan149 | ✅ في `main` |
 | [T5](demo/tasks/Task5-Reranker-and-Runner.md) | Reranker + registry + configs + runner | @KareemAlwam | ✅ في `main` |
-| [T6](demo/tasks/Task6-LLM.md) | LLMs (Qwen 3B / 7B, Aya 8B) + parsing الـ citations | @hm136101-png | 🟡 في `demo/blocks/llms.py` — qwen3b اتجرب، qwen7b و aya8b لسه |
+| [T6](demo/tasks/Task6-LLM.md) | LLMs (Qwen 3B / 7B, Aya 8B) + parsing الـ citations | @hm136101-png | ✅ Qwen 3B و 7B اتجربوا على Kaggle + Qwen3-8B إضافي — Aya مستني صلاحية HuggingFace |
 | [T7](demo/tasks/Task7-Evaluation.md) | `evaluate.py` + المقاييس + التحليل | — | ⬜ لسه ما بدأش |
+
+### النتايج (Kaggle T4)
+
+أحدث أرقام لكل التجارب في [`demo/results/kaggle/`](demo/results/kaggle/README.md)، وطريقة التشغيل في [`demo/kaggle/`](demo/kaggle/README.md).
 
 ---
 
