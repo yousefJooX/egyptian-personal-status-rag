@@ -1,0 +1,79 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Run Demo: arch1 (Dense E5, retrieval only)",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/demo/run.py",
+      "args": ["arch1", "--retrieval-only"],
+      "cwd": "${workspaceFolder}/demo",
+      "console": "integratedTerminal",
+      "justMyCode": false
+    },
+    {
+      "name": "Run Demo: arch1_bge (Dense BGE, retrieval only)",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/demo/run.py",
+      "args": ["arch1_bge", "--retrieval-only"],
+      "cwd": "${workspaceFolder}/demo",
+      "console": "integratedTerminal",
+      "justMyCode": false
+    },
+    {
+      "name": "Run Demo: arch2 (Hybrid + Reranker, retrieval only)",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/demo/run.py",
+      "args": ["arch2", "--retrieval-only"],
+      "cwd": "${workspaceFolder}/demo",
+      "console": "integratedTerminal",
+      "justMyCode": false
+    },
+    {
+      "name": "Run Demo: arch1 + Qwen3B (Full pipeline with LLM)",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/demo/run.py",
+      "args": ["arch1"],
+      "cwd": "${workspaceFolder}/demo",
+      "console": "integratedTerminal",
+      "justMyCode": false,
+      "env": {
+        "CUDA_VISIBLE_DEVICES": "0"
+      }
+    },
+    {
+      "name": "Run Demo: arch2_qwen3 (Hybrid + Reranker + Qwen3B)",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/demo/run.py",
+      "args": ["arch2_qwen3"],
+      "cwd": "${workspaceFolder}/demo",
+      "console": "integratedTerminal",
+      "justMyCode": false,
+      "env": {
+        "CUDA_VISIBLE_DEVICES": "0"
+      }
+    },
+    {
+      "name": "Check Dense Retrieval",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/demo/check_dense.py",
+      "cwd": "${workspaceFolder}/demo",
+      "console": "integratedTerminal",
+      "justMyCode": false
+    },
+    {
+      "name": "Check LLM",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/demo/check_llm.py",
+      "cwd": "${workspaceFolder}/demo",
+      "console": "integratedTerminal",
+      "justMyCode": false
+    }
+  ]
+}
