@@ -4,5 +4,5 @@ results/*
 !results/.gitkeep
 data/index/*
 !data/index/.gitkeep
-
+.vscode
 !results/kaggle/
