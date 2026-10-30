@@ -1,8 +1,7 @@
 __pycache__/
 *.pyc
-results/*
-!results/.gitkeep
+.vscode/
+results/kaggle/*
 data/index/*
 !data/index/.gitkeep
-.vscode
-!results/kaggle/
+evaluation_results/*
