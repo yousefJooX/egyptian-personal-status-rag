@@ -4,12 +4,12 @@
   "retriever": "hybrid",
   "reranker": "bge",
   "hit@5": "25/25",
-  "recall@5": 0.92,
+  "recall@5": 0.98,
   "mrr@5": 1.0,
   "ranking": [
     "hybrid_rr",
-    "e5",
     "bge",
+    "e5",
     "hybrid",
     "hybrid_e5",
     "bm25"
