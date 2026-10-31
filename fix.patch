@@ -1,0 +1,174 @@
+diff --git a/chunking/chunk_articles.py b/chunking/chunk_articles.py
+index 1e105a4..abffb58 100644
+--- a/chunking/chunk_articles.py
++++ b/chunking/chunk_articles.py
+@@ -45,9 +45,18 @@ def article_suffix(num, extra):
+     return s
+ 
+ 
++# Lines that look like titles to is_heading() but are really the last line of the previous
++# article (found by review: they were being moved to the start of the next article).
++NOT_HEADINGS = {
++    "إحدى الحدائق العامة",                                    # decree1087_2000, end of article 4
++    "عدم صلاحيته لأداء العمل من الإحصائيين الاجتماعيين",       # decree1089_2000, end of article 3
++}
++
++
+ def is_heading(line):
+     """Short line that is not a sentence -> probably a title."""
+     return (0 < len(line.split()) <= 8
++            and line not in NOT_HEADINGS
+             and not line.endswith((".", ":", "،"))   
+             and not re.search(r"\d", line)          
+             and not line.startswith("ألغيت"))        
+diff --git a/data/chunks.json b/data/chunks.json
+index bb212e7..402b99b 100644
+--- a/data/chunks.json
++++ b/data/chunks.json
+@@ -1291,22 +1291,22 @@
+  },
+  {
+   "id": "decree1087_2000_a004",
+-  "text": "مادة 4\nفي حالة عدم اتفاق الحاضن أو من بيده الصغير والصادر لصالحه الحكم على المكان الذي يتم فيه\nرؤية الصغير، يكون للمحكمة ان تنتقى من الأماكن التالية للرؤية وفقا للحالة المعروضة عليها وبما\nيتناسب- قدر الإمكان- وظروف أطراف الخصومة، مع مراعاة ان يتوافر فى المكان ما يشيع الطمأنينة\nفى نفس الصغير ولا يكبد أطراف الخصومة مشقة لا تحتمل.\nأحد النوادي الرياضية او الاجتماعية.\nأحد مراكز رعاية الشباب\nإحدى دور رعاية الأمومة والطفولة التي يتوافر فيها حدائق",
++  "text": "مادة 4\nفي حالة عدم اتفاق الحاضن أو من بيده الصغير والصادر لصالحه الحكم على المكان الذي يتم فيه\nرؤية الصغير، يكون للمحكمة ان تنتقى من الأماكن التالية للرؤية وفقا للحالة المعروضة عليها وبما\nيتناسب- قدر الإمكان- وظروف أطراف الخصومة، مع مراعاة ان يتوافر فى المكان ما يشيع الطمأنينة\nفى نفس الصغير ولا يكبد أطراف الخصومة مشقة لا تحتمل.\nأحد النوادي الرياضية او الاجتماعية.\nأحد مراكز رعاية الشباب\nإحدى دور رعاية الأمومة والطفولة التي يتوافر فيها حدائق\nإحدى الحدائق العامة",
+   "law": "decree1087_2000",
+   "article": "4",
+   "page": 46,
+   "law_name": "قرار وزير العدل 1087 لسنة 2000",
+   "heading": "",
+-  "n_words": 75
++  "n_words": 78
+  },
+  {
+   "id": "decree1087_2000_a005",
+-  "text": "إحدى الحدائق العامة\nمادة 5\nيجب ألا تقل مدة الرؤية عن ثلاث ساعات أسبوعيا فيما بين الساعة التاسعة صباحا والسابعة\nمساء، ويراعى قدر الإمكان ان يكون ذلك خلال العطلات الرسمية وبما لا يتعارض ومواعيد انتظام\nالصغير في دور التعليم.",
++  "text": "مادة 5\nيجب ألا تقل مدة الرؤية عن ثلاث ساعات أسبوعيا فيما بين الساعة التاسعة صباحا والسابعة\nمساء، ويراعى قدر الإمكان ان يكون ذلك خلال العطلات الرسمية وبما لا يتعارض ومواعيد انتظام\nالصغير في دور التعليم.",
+   "law": "decree1087_2000",
+   "article": "5",
+   "page": 47,
+   "law_name": "قرار وزير العدل 1087 لسنة 2000",
+-  "heading": "إحدى الحدائق العامة",
++  "heading": "",
+   "n_words": 34
+  },
+  {
+@@ -1601,22 +1601,22 @@
+  },
+  {
+   "id": "decree1089_2000_a003",
+-  "text": "مادة 3\nيقوم ولرئيس المحكمة الابتدائية او من يعهد اليه من قضاتها بمراجعة القيد فى السجل المبين بالمادة\nالسابقة شهريا للوقوف على حن سير العمل بمكتب الإحصائيين الاجتماعيين، ووضع القواعد اللازمة\nلضبط العمل به.\nولرئيس المحكمة الابتدائية- عند اللزوم- ان يرفع مذكرة مسببة لوزير العدل باقتراح رفع اسم من يثبت",
++  "text": "مادة 3\nيقوم ولرئيس المحكمة الابتدائية او من يعهد اليه من قضاتها بمراجعة القيد فى السجل المبين بالمادة\nالسابقة شهريا للوقوف على حن سير العمل بمكتب الإحصائيين الاجتماعيين، ووضع القواعد اللازمة\nلضبط العمل به.\nولرئيس المحكمة الابتدائية- عند اللزوم- ان يرفع مذكرة مسببة لوزير العدل باقتراح رفع اسم من يثبت\nعدم صلاحيته لأداء العمل من الإحصائيين الاجتماعيين",
+   "law": "decree1089_2000",
+   "article": "3",
+   "page": 52,
+   "law_name": "قرار وزير العدل 1089 لسنة 2000",
+   "heading": "",
+-  "n_words": 48
++  "n_words": 55
+  },
+  {
+   "id": "decree1089_2000_a004",
+-  "text": "عدم صلاحيته لأداء العمل من الإحصائيين الاجتماعيين\nمادة 4\nيعهد الى كل من المبينة أسماؤهم بالكشوف المرافقة لقرار وزير العدل بإصدار قوائم الإحصائيين\nالاجتماعيين للعمل كإحصائيين اجتماعيين بدوائر المحاكم الابتدائية المبينة قرين لسم كل منهم.",
++  "text": "مادة 4\nيعهد الى كل من المبينة أسماؤهم بالكشوف المرافقة لقرار وزير العدل بإصدار قوائم الإحصائيين\nالاجتماعيين للعمل كإحصائيين اجتماعيين بدوائر المحاكم الابتدائية المبينة قرين لسم كل منهم.",
+   "law": "decree1089_2000",
+   "article": "4",
+   "page": 52,
+   "law_name": "قرار وزير العدل 1089 لسنة 2000",
+-  "heading": "عدم صلاحيته لأداء العمل من الإحصائيين الاجتماعيين",
++  "heading": "",
+   "n_words": 26
+  },
+  {
+diff --git a/demo/data/test_set.json b/demo/data/test_set.json
+index fa95f85..fa66e75 100644
+--- a/demo/data/test_set.json
++++ b/demo/data/test_set.json
+@@ -137,7 +137,7 @@
+   },
+   {
+     "qid": "q_015",
+-    "question": "لو حصلت مقاومة أثناء تنفيذ حكم تسليم الطفل أو رؤيته، مين بيتدخل وإيه الإجراء الممكن؟",
++    "question": "لو حصلت مقاومة أثناء تنفيذ حكم تسليم الطفل أو رؤيته، مين بيتدخل وإيه الإجراء الممكن؟ وهل يجوز إعادة التنفيذ ودخول المنازل؟",
+     "gold_chunks": [
+       "decree1087_2000_a002",
+       "decree1087_2000_a003"
+@@ -208,7 +208,7 @@
+   },
+   {
+     "qid": "q_022",
+-    "question": "مين بيحضر وجوبًا في قضايا الطلاق والحضانة، وإيه المطلوب منه بعد كده؟",
++    "question": "مين الخبراء اللي بيحضروا وجوبًا في قضايا الطلاق والحضانة، وبيتكونوا من أي تخصصات، وإيه المطلوب منهم بعد كده؟",
+     "gold_chunks": [
+       "law10_2004_a002",
+       "law10_2004_a011"
+@@ -334,4 +334,4 @@
+     "reference_answer": "لم أجد إجابة في القواعد المتاحة.",
+     "type": "off_topic"
+   }
+-]
++]
+\ No newline at end of file
+diff --git a/demo/notebooks/01_retrieval_test.ipynb b/demo/notebooks/01_retrieval_test.ipynb
+index b0a1a32..fd1ef98 100644
+--- a/demo/notebooks/01_retrieval_test.ipynb
++++ b/demo/notebooks/01_retrieval_test.ipynb
+@@ -122,8 +122,9 @@
+     "def qgroup(item):\n",
+     "    \"\"\"Question groups used in the breakdown. Adds item['qtype'] if the test set has it.\"\"\"\n",
+     "    g = {\"size\": \"multi-chunk\" if len(item[\"gold_chunks\"]) > 1 else \"single-chunk\"}\n",
+-    "    if item.get(\"qtype\"):\n",
+-    "        g[\"qtype\"] = item[\"qtype\"]\n",
++    "    qt = item.get(\"qtype\") or item.get(\"type\")   # the test set labels kinds as \"type\"\n",
++    "    if qt:\n",
++    "        g[\"qtype\"] = qt\n",
+     "    return g\n",
+     "\n",
+     "def score(per_q, T):\n",
+diff --git a/demo/notebooks/02_retrieval_compare.ipynb b/demo/notebooks/02_retrieval_compare.ipynb
+index e0bb624..17fdb04 100644
+--- a/demo/notebooks/02_retrieval_compare.ipynb
++++ b/demo/notebooks/02_retrieval_compare.ipynb
+@@ -87,8 +87,9 @@
+     "def qgroup(item):\n",
+     "    \"\"\"Question groups used in the breakdown. Adds item['qtype'] if the test set has it.\"\"\"\n",
+     "    g = {\"size\": \"multi-chunk\" if len(item[\"gold_chunks\"]) > 1 else \"single-chunk\"}\n",
+-    "    if item.get(\"qtype\"):\n",
+-    "        g[\"qtype\"] = item[\"qtype\"]\n",
++    "    qt = item.get(\"qtype\") or item.get(\"type\")   # the test set labels kinds as \"type\"\n",
++    "    if qt:\n",
++    "        g[\"qtype\"] = qt\n",
+     "    return g\n",
+     "\n",
+     "def score(per_q, T):\n",
+diff --git a/demo/notebooks/03_llm_gold_chunks_test.ipynb b/demo/notebooks/03_llm_gold_chunks_test.ipynb
+index 2f6aa74..d82488b 100644
+--- a/demo/notebooks/03_llm_gold_chunks_test.ipynb
++++ b/demo/notebooks/03_llm_gold_chunks_test.ipynb
+@@ -139,8 +139,9 @@
+     "def qgroup(item):\n",
+     "    \"\"\"Question groups used in the breakdown. Adds item['qtype'] if the test set has it.\"\"\"\n",
+     "    g = {\"size\": \"multi-chunk\" if len(item[\"gold_chunks\"]) > 1 else \"single-chunk\"}\n",
+-    "    if item.get(\"qtype\"):\n",
+-    "        g[\"qtype\"] = item[\"qtype\"]\n",
++    "    qt = item.get(\"qtype\") or item.get(\"type\")   # the test set labels kinds as \"type\"\n",
++    "    if qt:\n",
++    "        g[\"qtype\"] = qt\n",
+     "    return g\n",
+     "\n",
+     "def score(per_q, T):\n",
+diff --git a/demo/notebooks/05_evaluate_all.ipynb b/demo/notebooks/05_evaluate_all.ipynb
+index 7ddca5b..baed114 100644
+--- a/demo/notebooks/05_evaluate_all.ipynb
++++ b/demo/notebooks/05_evaluate_all.ipynb
+@@ -119,8 +119,9 @@
+     "        g = {\"size\": \"unanswerable\"}\n",
+     "    else:\n",
+     "        g = {\"size\": \"multi-chunk\" if len(item[\"gold_chunks\"]) > 1 else \"single-chunk\"}\n",
+-    "    if item.get(\"qtype\"):\n",
+-    "        g[\"qtype\"] = item[\"qtype\"]\n",
++    "    qt = item.get(\"qtype\") or item.get(\"type\")   # the test set labels kinds as \"type\"\n",
++    "    if qt:\n",
++    "        g[\"qtype\"] = qt\n",
+     "    return g\n",
+     "\n",
+     "results_dir = DEMO / \"results\"\n",

@@ -1,0 +1,17 @@
+{
+  "best_retrieval": "hybrid_rr",
+  "embedder": "bge",
+  "retriever": "hybrid",
+  "reranker": "bge",
+  "hit@5": "25/25",
+  "recall@5": 0.92,
+  "mrr@5": 1.0,
+  "ranking": [
+    "hybrid_rr",
+    "e5",
+    "bge",
+    "hybrid",
+    "hybrid_e5",
+    "bm25"
+  ]
+}
