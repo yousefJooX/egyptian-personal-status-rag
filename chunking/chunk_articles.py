@@ -45,9 +45,18 @@ def article_suffix(num, extra):
     return s
 
 
+# Lines that look like titles to is_heading() but are really the last line of the previous
+# article (found by review: they were being moved to the start of the next article).
+NOT_HEADINGS = {
+    "إحدى الحدائق العامة",                                    # decree1087_2000, end of article 4
+    "عدم صلاحيته لأداء العمل من الإحصائيين الاجتماعيين",       # decree1089_2000, end of article 3
+}
+
+
 def is_heading(line):
     """Short line that is not a sentence -> probably a title."""
     return (0 < len(line.split()) <= 8
+            and line not in NOT_HEADINGS
             and not line.endswith((".", ":", "،"))   
             and not re.search(r"\d", line)          
             and not line.startswith("ألغيت"))        
