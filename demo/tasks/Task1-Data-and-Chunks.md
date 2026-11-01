@@ -73,3 +73,23 @@ Rules for the fields:
 
 - Do not change field names or the id format after day 0 without telling the team.
 - Do not merge several articles into one chunk.
+
+## Update after the chunk fixes (branch `chunk-fixes`)
+
+**What was wrong.** `is_heading()` in `chunking/chunk_articles.py` treated the last line of two articles as the title of the next article. At a page break the line moved into the wrong chunk:
+
+| Line | Belongs to | Was in |
+|---|---|---|
+| "إحدى الحدائق العامة" | end of `decree1087_2000_a004` | start of `decree1087_2000_a005` |
+| "عدم صلاحيته لأداء العمل من الإحصائيين الاجتماعيين" | end of `decree1089_2000_a003` | start of `decree1089_2000_a004` |
+
+**What changed.**
+- Root cause fixed in `chunking/chunk_articles.py`: a `NOT_HEADINGS` set lists those two lines, and `is_heading()` skips them.
+- `data/chunks.json` regenerated from the fixed chunker. It is still 188 chunks. Four chunks changed: `decree1087_2000_a004`, `decree1087_2000_a005`, `decree1089_2000_a003`, `decree1089_2000_a004`.
+- All 188 chunks were scanned for the same problem. No other spilled lines were found.
+- Field names and id format are unchanged.
+
+**Known weak chunk.** `law25_1920_a010` is only 31 characters ("الفرقة بالعيب طلاق بائن"). It is hard for any retriever to find. This is a data limit, not a bug, and it is kept as a failure example.
+
+**After any chunk change.** Delete the cached embeddings in `demo/data/index/` (except `.gitkeep`). The cache name depends only on the embedder, so old embeddings would otherwise be reused. Then re-run the retrieval notebooks.
+
