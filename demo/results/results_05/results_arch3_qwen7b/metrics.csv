@@ -1,0 +1,2 @@
+config,recall@5,mrr,citation_acc,refusal_acc,avg_seconds,peak_gpu_mb
+arch3_qwen7b,0.98,1.0,0.682,0.914,5.379,10661

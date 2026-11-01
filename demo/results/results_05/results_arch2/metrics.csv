@@ -1,0 +1,2 @@
+config,recall@5,mrr,citation_acc,refusal_acc,avg_seconds,peak_gpu_mb
+arch2,0.96,0.91,0.727,0.914,5.37,4550
