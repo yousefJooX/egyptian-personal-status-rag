@@ -67,6 +67,7 @@ For each answerable question write a reference answer: one or two sentences, end
 
 - `qid`: `q_001`, `q_002`, ... unique.
 - `gold_chunks`: list of chunk ids from `chunks.json`. Empty list for off-topic questions.
+- `type`: one of `literal`, `paraphrase`, `multi`, `off_topic`. The evaluation notebooks read it (they also accept `qtype`) to break results down by question kind.
 
 ## Done when
 
@@ -78,3 +79,35 @@ For each answerable question write a reference answer: one or two sentences, end
 
 - Do not use questions copied from the book's Q&A section.
 - Do not label a question answerable if the answer needs knowledge outside the chunks.
+
+## Update after the chunk fixes (branch `chunk-fixes`)
+
+**What was wrong.** For q_015 and q_022 the question was fully answered by one chunk, but two chunks were listed as gold. A retriever that found the right answer was still counted as missing the second chunk.
+
+**What changed.** The two questions were reworded so both gold chunks are really needed. Gold lists and reference answers were not changed.
+
+| Question | Old | New |
+|---|---|---|
+| q_015 | ...مين بيتدخل وإيه الإجراء الممكن؟ | same, plus: وهل يجوز إعادة التنفيذ ودخول المنازل؟ |
+| q_022 | مين بيحضر وجوبًا في قضايا الطلاق والحضانة، وإيه المطلوب منه بعد كده؟ | مين الخبراء اللي بيحضروا وجوبًا ... وبيتكونوا من أي تخصصات، وإيه المطلوب منهم بعد كده؟ |
+
+**Test set after the change.** Still 35 questions: 11 `literal`, 9 `paraphrase`, 5 `multi`, 10 `off_topic` (25 answerable). The 5 multi-chunk questions required by this task are kept.
+
+**Things to state openly in the report.**
+- Two questions were reworded after the first retrieval test. Part of the recall gain on them comes from the changed test set, not from better retrieval.
+- q_025 is kept unchanged on purpose. Its second gold chunk is 31 characters long, so it is a genuine hard case for the failure analysis.
+- The question kind is stored under `type`. The notebooks read `type` as well as `qtype`.
+
+**Retrieval results after the fix** (recall@5, 25 answerable questions, old on `main` and new on `chunk-fixes`):
+
+| Retriever | Old | New | mrr@5 (new) |
+|---|---|---|---|
+| hybrid_rr | 0.92 | 0.98 | 1.0 |
+| bge | 0.92 | 0.96 | 0.91 |
+| e5 | 0.92 | 0.94 | 0.893 |
+| hybrid | 0.88 | 0.90 | 0.841 |
+| hybrid_e5 | 0.86 | 0.88 | 0.813 |
+| bm25 | 0.76 | 0.78 | 0.667 |
+
+The gain is mostly from the reworded questions (q_015 improved in all six retrievers). The chunk fix improved only hybrid_rr on q_004. hybrid_rr is still the best retriever.
+
