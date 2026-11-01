@@ -27,6 +27,13 @@ arch2_qwen3,size: multi-chunk,5,0.8,1.0,0.4,1.0
 arch2_qwen3,qtype: multi,5,0.8,1.0,0.4,1.0
 arch2_qwen3,size: unanswerable,10,,,,1.0
 arch2_qwen3,qtype: off_topic,10,,,,1.0
+arch3_qwen3,size: single-chunk,20,1.0,1.0,0.75,1.0
+arch3_qwen3,qtype: literal,11,1.0,1.0,0.727,1.0
+arch3_qwen3,qtype: paraphrase,9,1.0,1.0,0.778,1.0
+arch3_qwen3,size: multi-chunk,5,0.9,1.0,0.8,1.0
+arch3_qwen3,qtype: multi,5,0.9,1.0,0.8,1.0
+arch3_qwen3,size: unanswerable,10,,,,1.0
+arch3_qwen3,qtype: off_topic,10,,,,1.0
 arch3_qwen7b,size: single-chunk,20,1.0,1.0,0.765,0.85
 arch3_qwen7b,qtype: literal,11,1.0,1.0,0.7,0.909
 arch3_qwen7b,qtype: paraphrase,9,1.0,1.0,0.857,0.778
