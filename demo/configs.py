@@ -9,4 +9,7 @@ CONFIGS = {
     # extra: Qwen3-8B, same retrieval as arch2 / arch3 so only the LLM changes
     "arch2_qwen3": {"embedder": "bge", "retriever": "dense", "reranker": None, "llm": "qwen3_8b"},
     "arch3_qwen3": {"embedder": "bge", "retriever": "hybrid", "reranker": "bge", "llm": "qwen3_8b"},
+        # best retrieval from notebook 02 (hybrid_rr), runnable LLMs
+    "arch3_qwen7b": {"embedder": "bge", "retriever": "hybrid", "reranker": "bge", "llm": "qwen7b"},
+    "arch3_qwen3b": {"embedder": "bge", "retriever": "hybrid", "reranker": "bge", "llm": "qwen3b"},
 }
